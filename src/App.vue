@@ -13,12 +13,14 @@
         {{ $root.store.username }}: <button @click="Logout">Logout</button>|
       </span>
     </div>
-    <router-view />
+    <MainPage></MainPage>
   </div>
 </template>
 
 <script>
+import MainPage from './pages/MainPage';
 export default {
+  components: { MainPage },
   name: "App",
   methods: {
     Logout() {
