@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <Navbar></Navbar>
     <div id="nav">
       <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
       <router-link :to="{ name: 'search' }">Search</router-link>|
       {{ !$root.store.username }}
-      <span v-if="!$root.store.username">
+      <span v-if="$root.store.username">
         Guest:
         <router-link :to="{ name: 'register' }">Register</router-link>|
         <router-link :to="{ name: 'login' }">Login</router-link>|
@@ -19,9 +20,10 @@
 
 <script>
 import MainPage from './pages/MainPage';
+import Navbar from './components/Navbar';
 export default {
-  components: { MainPage },
   name: "App",
+  components: { MainPage , Navbar },
   methods: {
     Logout() {
       this.$root.store.logout();
@@ -47,7 +49,7 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 #nav a {
