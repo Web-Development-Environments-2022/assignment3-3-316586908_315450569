@@ -4,26 +4,26 @@
       {{ title }}:
       <slot></slot>
     </h3>
-    <b-row>
-      <b-col v-for="r in recipes" :key="r.id" >
+    <b-col>
+      <b-row v-for="r in recipes" :key="r.id" >
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-    </b-row>
+      </b-row>
+    </b-col>
   </b-container>
 </template>
+
 
 <script>
 import state from "../store.js";
 import RecipePreview from "./RecipePreview";
 export default {
-  name: "RecipePreviewList",
+  name: "RecipePreviewListLoggedIn",
   components: {
     RecipePreview
   },
   props: {
     title: {
       type: String,
-      required: true
     }
   },
   data() {
@@ -38,8 +38,8 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          state.server_domain + "/recipes/random",
-          // "http://localhost:3000/recipes/random",
+            state.server_domain + "/users/lastseen",
+        //   "http://localhost:3000/recipes/random",
           // this.$root.store.server_domain + "/recipes/random",
           // "https://test-for-3-2.herokuapp.com/recipes/random"
         );
@@ -57,8 +57,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.container {
-  min-height: 400px;
-}
+<style>
+
 </style>

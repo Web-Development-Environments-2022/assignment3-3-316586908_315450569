@@ -1,18 +1,12 @@
 <template>
-<div class="card w-45" style="width: 15rem;">
+<div class="card w-30" style="width: 12rem;">
   <div class="recipe-body">
       <img v-if="image_load" :src="recipe.image" class="card-img-top" />
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ recipe.title }}</h5>
-    <ul class="recipe-overview">
-        <li class="nav-link">{{ recipe.readyInMinutes }} minutes</li>
-        <li class="nav-link">{{ recipe.popularity }} likes</li>
-    </ul>
+    <p class="recipe-overview">{{ recipe.readyInMinutes }} minutes <br>{{ recipe.popularity }} likes</p>
     <router-link class="btn btn-primary" :to="{ name: 'recipe', params: { recipeId: recipe.id } }"  style="display:inline-block">Recipe Page</router-link>
-
-  
-
 
   <!-- <router-link
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"

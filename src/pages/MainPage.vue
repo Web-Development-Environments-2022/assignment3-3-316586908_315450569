@@ -1,23 +1,13 @@
 <template>
   <div class="container">
     <h1 class="title">Main Page</h1>
-    <div style="display:inline-block">
-      <div style="display:inline-block; margin-left:100px">
+    <div style="display:inline">
+      <div style="display:inline; float:left; margin-right:50px;">
         <RecipePreviewList title="Random Recipes" class="RandomRecipes center" />
       </div>
-      <div style="display:inline-block; margin-left:300px;">
-        <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
-        <!-- {{ !$root.store.username }} -->
-        <!-- <RecipePreviewList v-if
-            title="Last Viewed Recipes"
-            :class="{
-              RandomRecipes: true,
-              blur: !$root.store.username,
-              center: true
-            }"
-            disabled
-        ></RecipePreviewList> -->
-        <LoginPage v-if="!$root.store.username"></LoginPage>
+      <div style="display:sticky; float: right; margin-left:5px; margin-top:5px">
+        <LoginPage v-if="$root.store.username"></LoginPage>
+        <RecipePreviewListLoggedIn v-else title="Last Watched Recipes"></RecipePreviewListLoggedIn>
       </div>
     </div>
     
@@ -32,12 +22,14 @@
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
 import LoginPage from "../pages/LoginPage";
+import RecipePreviewListLoggedIn from "../components/RecipePreviewListLoggedIn";
 
 export default {
   name: "MainPage",
   components: {
     RecipePreviewList,
-    LoginPage
+    LoginPage,
+    RecipePreviewListLoggedIn
   }
 };
 </script>
