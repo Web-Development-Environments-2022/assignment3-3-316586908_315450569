@@ -2,7 +2,7 @@
   "name": "assignment-3-3",
   "version": "1.0.0",
   "scripts": {
-    "app" : "vue-cli-service serve ./src/main.js",
+    "app": "vue-cli-service serve ./src/main.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
@@ -11,6 +11,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
+    "popper.js": "^1.16.1",
     "sass": "^1.50.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",

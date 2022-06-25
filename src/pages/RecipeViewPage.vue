@@ -10,15 +10,15 @@
           <div class="wrapped">
             <div class="mb-3">
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.aggregateLikes }} likes</div>
+              <div>Likes: {{ recipe.popularity }} likes</div>
             </div>
             Ingredients:
             <ul>
               <li
-                v-for="(r, index) in recipe.extendedIngredients"
-                :key="index + '_' + r.id"
+                v-for="(r, index) in recipe.ingredients"
+                :key="index + '_' + r.ingredientName"
               >
-                {{ r.original }}
+                {{ r.ingredientName }} : {{ r.amount }} {{r.units}}
               </li>
             </ul>
           </div>
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import store from "../store.js";
 export default {
   data() {
     return {
@@ -56,7 +57,8 @@ export default {
       try {
         response = await this.axios.get(
           // "https://test-for-3-2.herokuapp.com/recipes/info",
-          this.$root.store.server_domain + "/recipes/info",
+          // this.$root.store.server_domain + "/recipes/info",
+          store.server_domain + "/recipes/reviewRecipe/" + this.$route.params.recipeId,
           {
             params: { id: this.$route.params.recipeId }
           }
@@ -73,8 +75,8 @@ export default {
       let {
         analyzedInstructions,
         instructions,
-        extendedIngredients,
-        aggregateLikes,
+        ingredients,
+        popularity,
         readyInMinutes,
         image,
         title
@@ -91,8 +93,8 @@ export default {
         instructions,
         _instructions,
         analyzedInstructions,
-        extendedIngredients,
-        aggregateLikes,
+        ingredients,
+        popularity,
         readyInMinutes,
         image,
         title

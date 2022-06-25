@@ -1,29 +1,15 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <!-- <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
-      <span v-if="$root.store.username">
-        Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
-      </span>
-      <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
-      </span>
-    </div> -->
-    <MainPage></MainPage>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MainPage from './pages/MainPage';
 import Navbar from './components/Navbar';
 export default {
   name: "App",
-  components: { MainPage , Navbar },
+  components: { Navbar },
   methods: {
     Logout() {
       this.$root.store.logout();
