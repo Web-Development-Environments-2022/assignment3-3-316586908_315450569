@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+import state from "./store";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
@@ -68,6 +69,7 @@ Vue.config.productionTip = false;
 
 const shared_data = {
   username: localStorage.username,
+  server_domain: state.server_domain,
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;

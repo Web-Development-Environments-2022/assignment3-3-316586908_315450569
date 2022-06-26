@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import state from "../store.js";
 import RecipePreview from "./RecipePreview";
 export default {
   name: "RecipePreviewList",
@@ -38,9 +37,9 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          state.server_domain + "/recipes/random",
+          // state.server_domain + "/recipes/random",
           // "http://localhost:3000/recipes/random",
-          // this.$root.store.server_domain + "/recipes/random",
+          this.$root.store.server_domain + "/recipes/random",
           // "https://test-for-3-2.herokuapp.com/recipes/random"
         );
 

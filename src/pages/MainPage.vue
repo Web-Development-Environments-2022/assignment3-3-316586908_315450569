@@ -4,18 +4,13 @@
     <div style="display:inline">
       <div style="display:inline; float:left; margin-right:50px;">
         <RecipePreviewList title="Random Recipes" class="RandomRecipes center" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" @click="Refresh">Refresh</button>
       </div>
       <div style="display:sticky; float: right; margin-left:5px; margin-top:5px">
-        <LoginPage v-if="$root.store.username"></LoginPage>
+        <LoginPage v-if="!$root.store.username"></LoginPage>
         <RecipePreviewListLoggedIn v-else title="Last Watched Recipes"></RecipePreviewListLoggedIn>
       </div>
     </div>
-    
-    <!-- <div
-      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
-    >
-      Centeredasdasdad
-    </div>-->
   </div>
 </template>
 
@@ -30,6 +25,11 @@ export default {
     RecipePreviewList,
     LoginPage,
     RecipePreviewListLoggedIn
+  },
+  methods: {
+    Refresh(){
+      RecipePreviewList.methods.updateRecipes();
+    }
   }
 };
 </script>
