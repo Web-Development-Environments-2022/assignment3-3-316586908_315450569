@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 import state from "./store";
 
 import routes from "./routes";
@@ -25,7 +26,10 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  ModalPlugin,
+
 } from "bootstrap-vue";
+import DropdownPlugin from "bootstrap/dist/css/bootstrap.css";
 [
   FormGroupPlugin,
   FormPlugin,
@@ -37,6 +41,8 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  DropdownPlugin,
+  ModalPlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
@@ -66,6 +72,9 @@ axios.interceptors.response.use(
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
+
+import  VueCookies from "vue-cookies";
+Vue.use(VueCookies);
 
 const shared_data = {
   username: localStorage.username,

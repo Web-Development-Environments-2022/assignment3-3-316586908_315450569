@@ -82,4 +82,92 @@ export default {
 
 <style>
 
+.div0 {
+    background-color: #232323;
+    display: flex;
+	justify-content: center;
+}
+
+.div1 {
+    float: left;
+    width: 48%;
+    margin-bottom: 16px;
+    padding: 11px;
+}
+
+.div2 {
+    box-shadow: 0px 8px 10px 3px rgba(255, 255, 255, 0.2);
+    margin: 4px;
+}
+
+
+.aboutSec {
+    padding: 55px;
+    text-align: center;
+    background-color: #232323;
+    color: white;
+}
+
+.div3 {
+    padding: 0 10px;
+    color: aliceblue;
+    background-color: #232323;
+}
+
+.div3::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.id {
+    color: rgb(114, 144, 176);
+}
+
+#ido, #tal {
+    float: left;
+    width:  665px;
+    height: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    overflow: auto;
+    display: inline;
+    margin: 0 auto;
+}
+
+.headline{
+    color: rgb(255, 79, 79);
+}
+/* 
+#about_page{
+    display: none;  
+    position: fixed;  
+    z-index: 3;  
+    padding-top: 10px;  
+
+    width: 100%; 
+    height: 100%; 
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto; 
+    background-color: rgb(243, 243, 243); 
+    background-color: rgba(56, 145, 97, 0.4); 
+}  */
+
+.aboutClass-inner {
+    position: relative;
+    margin: auto;
+    border: 0px solid #888;
+    width: 100%;
+    max-width: 100%;
+  }
+
+      
+#about_para{
+    font-family:Arial, Helvetica, sans-serif;
+    font: bold;
+    font-size: larger;
+
+}
 </style>

@@ -4,7 +4,7 @@
   
     <div class="r_img">
         <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" >
-          <img v-if="image_load" :src="recipe.image" class="w-100"/>
+          <img :src="recipe.image" class="w-100"/>
         </router-link>
      </div> 
   <div class="card-body">
@@ -49,16 +49,6 @@
 
 <script>
 export default {
-  mounted() {
-    this.axios.get(this.recipe.image).then((i) => {
-      this.image_load = true;
-    });
-  },
-  data() {
-    return {
-      image_load: false
-    };
-  },
   props: {
     recipe: {
       type: Object,
