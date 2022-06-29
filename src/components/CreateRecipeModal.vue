@@ -3,7 +3,7 @@
     <b-modal
       id="modal-prevent-closing"
       ref="modal"
-      title="Submit Your Name"
+      title="Create Your Recipe"
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOk"

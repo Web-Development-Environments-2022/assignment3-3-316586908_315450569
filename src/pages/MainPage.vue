@@ -4,7 +4,7 @@
     <div style="display:inline">
       <div style="display:inline; float:left; margin-right:50px;">
         <RecipePreviewList title="Random Recipes" class="RandomRecipes center" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" @click="Refresh">Refresh</button>
+        <b-button class="btn btn-outline-success my-2 my-sm-0" @click="Refresh">Refresh</b-button>
       </div>
       <div style="display:sticky; float: right; margin-left:5px; margin-top:5px">
         <LoginPage v-if="!$root.store.username"></LoginPage>
@@ -28,7 +28,10 @@ export default {
   },
   methods: {
     Refresh(){
+      // RecipePreviewList.mounted();
       RecipePreviewList.methods.updateRecipes();
+      // this.$root.$emit('RecipePreviewList');
+      console.log("CLICKED");
     }
   }
 };

@@ -5,7 +5,7 @@
       <slot></slot>
     </h3>
     <b-row>
-      <b-col v-for="r in recipes" :key="r.id" >
+      <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
     </b-row>
@@ -36,7 +36,7 @@ export default {
   methods: {
     async updateRecipes() {
       try {
-        const response = await this.axios.get(
+        const response = await this.$http.get(
           // state.server_domain + "/recipes/random",
           // "http://localhost:3000/recipes/random",
           this.$root.store.server_domain + "/recipes/random",
@@ -44,9 +44,9 @@ export default {
         );
 
         // console.log(response);
-        const recipes = response.data.recipes;
+        const recipes_1 = response.data.recipes;
         this.recipes = [];
-        this.recipes.push(...recipes);
+        this.recipes.push(...recipes_1);
         // console.log(this.recipes);
       } catch (error) {
         console.log(error);

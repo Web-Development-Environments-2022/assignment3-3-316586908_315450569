@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import RecipePreview from "../components/RecipePreview.vue";
+import RecipePreview from "../components/RecipePreview";
 import { floor } from "mathjs";
 export default {
   name: "RecipePreviewFavorites",

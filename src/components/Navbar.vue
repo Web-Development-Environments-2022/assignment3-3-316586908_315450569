@@ -6,7 +6,7 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav >
           <b-navbar-nav>
-            <router-link id="routLink" :to="{ name: 'main' }" class="nav-link">Main</router-link>
+            <router-link id="routLink" :to="{ name: 'main' }" class="nav-link">Home</router-link>
             <router-link id="routLink" :to="{ name: 'search' }" class="nav-link">Search </router-link>
             <router-link id="routLink" :to="{ name: 'about' }" class="nav-link">About </router-link>
           </b-navbar-nav>
@@ -28,19 +28,19 @@
         </div>
       </span>
       <span v-else style="display:inline; ">
-        <h5 style="display:inline; font-family:Cursive; text-transform: uppercase; color: blue">{{ $root.store.username }} : </h5>
+        <h5 style="display:inline; font-family:Cursive; text-transform: uppercase; color: white">{{ $root.store.username }} : </h5>
          
         <div style="display:inline; ">
           <div style="display:inline;">
-            <b-dropdown id="dropdown-1" text="Personal"  class="m-md-2">
+            <b-dropdown id="dropdown-1" text="Personal"  class="m-md-2" variant="info" >
               <router-link id="routLink" :to="{ name: 'favorites' }" class="nav-link">My Favorites</router-link>
-              <router-link id="routLink" :to="{ name: 'search' }" class="nav-link">My Recipes</router-link>
+              <router-link id="routLink" :to="{ name: 'myRecipes' }" class="nav-link">My Recipes</router-link>
               <router-link id="routLink" :to="{ name: 'about' }" class="nav-link">Family Recipes</router-link>
             </b-dropdown>
           </div>
             <div style="display:inline-block">
                 <!-- <router-link id="routLink" :to="{ name: 'createRecipe' }" class="nav-link" style="display:inline-block">Create Recipe</router-link> -->
-                <b-button class="nav-link" v-b-modal.modal-prevent-closing>Create Recipe</b-button>
+                <b-button class="btn btn-light" v-b-modal.modal-prevent-closing style="margin-right:10px">Create Recipe</b-button>
                 <CreateRecipeModal> </CreateRecipeModal>
             </div>
             <div style="display:inline">

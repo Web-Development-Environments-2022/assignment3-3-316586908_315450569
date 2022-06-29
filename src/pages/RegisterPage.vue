@@ -26,6 +26,46 @@
       </b-form-group>
 
       <b-form-group
+        id="input-group-name"
+        label-cols-sm="3"
+        label="First Name:"
+        label-for="firstName"
+      >
+        <b-form-input
+          id="firstName"
+          v-model="$v.form.firstName.$model"
+          type="text"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          first name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          first name alpha
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-name"
+        label-cols-sm="3"
+        label="Last Name:"
+        label-for="lastName"
+      >
+        <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          last name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          last name alpha
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
@@ -88,6 +128,26 @@
         >
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
+              id="input-group-name"
+              label-cols-sm="3"
+              label="Email:"
+              label-for="email"
+            >
+              <b-form-input
+                id="email"
+                v-model="$v.form.email.$model"
+                type="text"
+                :state="validateState('email')"
+              ></b-form-input>
+              <b-form-invalid-feedback v-if="!$v.form.email.required">
+                email is required
+              </b-form-invalid-feedback>
+              <b-form-invalid-feedback v-if="!$v.form.email.email">
+                email alpha
+              </b-form-invalid-feedback>
       </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
@@ -156,8 +216,20 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+      firstName: {
+        required,
+        alpha
+      },
+      lastName: {
+        required,
+        alpha
+      },
       country: {
         required
+      },
+      email: {
+        required,
+        email
       },
       password: {
         required,

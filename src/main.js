@@ -3,6 +3,7 @@ import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 axios.defaults.withCredentials = true;
+Vue.prototype.$http = axios;
 import state from "./store";
 
 import routes from "./routes";
@@ -79,15 +80,18 @@ Vue.use(VueCookies);
 const shared_data = {
   username: localStorage.username,
   server_domain: state.server_domain,
+  arr_to_sort: [],
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
     console.log("login", this.username);
+    this.arr_to_sort = [];
   },
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
     this.username = undefined;
+    this.arr_to_sort = [];
   },
 };
 console.log(shared_data);

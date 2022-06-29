@@ -25,8 +25,7 @@
 </template>
 
 <script>
-import RecipePreview from "../components/RecipePreview.vue";
-import { floor } from "mathjs";
+import RecipePreview from "../components/RecipePreview";
 export default {
   name: "RecipePreviewFavorites",
   components: {
@@ -45,7 +44,7 @@ export default {
   async created() {
       try {
         const response = await this.axios.get(
-          this.$root.store.server_domain + "/users/favorites");
+          this.$root.store.server_domain + "/users/myRecipes");
 
         const recipes = response.data.recipes;
         this.recipes = [];

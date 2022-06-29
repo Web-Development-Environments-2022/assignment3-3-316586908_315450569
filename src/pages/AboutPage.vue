@@ -138,7 +138,7 @@ export default {
 
 .div1Tal {
     float: left;
-	margin-left: 350px;
+	margin-left: 450px;
     width: 48%;
     margin-bottom: 16px;
     padding: 11px;
@@ -195,21 +195,6 @@ export default {
 .headline{
     color: rgb(255, 79, 79);
 }
-/* 
-#about_page{
-    display: none;  
-    position: fixed;  
-    z-index: 3;  
-    padding-top: 10px;  
-
-    width: 100%; 
-    height: 100%; 
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto; 
-    background-color: rgb(243, 243, 243); 
-    background-color: rgba(56, 145, 97, 0.4); 
-}  */
 
 #about_page{
 
@@ -226,7 +211,7 @@ export default {
 
     position: relative;
     margin: auto;
-    border: 0px solid #888;
+
     width: 100%;
     max-width: 100%;
   }
