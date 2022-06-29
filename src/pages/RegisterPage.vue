@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <h1 class="title">Register</h1>
+  <div class="imgD" style="bottom: 30%;">
+    <div class="what" style="position: absolute; top: 60%; left: 38%; bottom: 20%;">
+    <h1 class="title" >Register</h1>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group
         id="input-group-username"
@@ -153,8 +154,9 @@
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
         type="submit"
-        variant="primary"
+        variant="dark"
         style="width:250px;"
+        
         class="ml-5 w-75"
         >Register</b-button
       >
@@ -176,6 +178,10 @@
       <pre class="m-0"><strong>form:</strong> {{ form }}</pre>
       <pre class="m-0"><strong>$v.form:</strong> {{ $v.form }}</pre>
     </b-card> -->
+    <br>
+    <br>
+    <br>
+  </div>
   </div>
 </template>
 
@@ -296,7 +302,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container {
+
+.what{
   max-width: 500px;
+}
+.imgD {
+
+  background-image: url("../images/recipesImages/img4.webp"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 400px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 </style>
