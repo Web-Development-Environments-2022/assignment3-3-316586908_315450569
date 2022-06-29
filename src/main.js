@@ -28,6 +28,7 @@ import {
   ToastPlugin,
   LayoutPlugin,
   ModalPlugin,
+  ImagePlugin
 
 } from "bootstrap-vue";
 import DropdownPlugin from "bootstrap/dist/css/bootstrap.css";
@@ -43,7 +44,8 @@ import DropdownPlugin from "bootstrap/dist/css/bootstrap.css";
   ToastPlugin,
   LayoutPlugin,
   DropdownPlugin,
-  ModalPlugin
+  ModalPlugin,
+  ImagePlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

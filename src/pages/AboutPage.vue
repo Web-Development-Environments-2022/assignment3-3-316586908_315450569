@@ -138,7 +138,7 @@ export default {
 
 .div1Tal {
     float: left;
-	margin-left: 450px;
+	margin-left: 400px;
     width: 48%;
     margin-bottom: 16px;
     padding: 11px;
