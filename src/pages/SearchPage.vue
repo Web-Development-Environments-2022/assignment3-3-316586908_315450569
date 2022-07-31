@@ -1,6 +1,6 @@
 <template>
   <div class="mainIm" >
-    <div style="position: absolute ; top:80%; left: 38%;">
+    <div style="position: absolute ; top:80%; left: 25%;">
     <h1 class="title">Search Page</h1>
       <div id="search_options">
         <form class="form-inline my-2 my-lg-0" ref="form" @submit.stop.prevent="handleSubmit" >
@@ -50,7 +50,7 @@
           <div style="display:inline-block"> 
             <b-button type="reset" variant="danger" @click="onReset">Reset</b-button>
           </div>
-          <div style="float:right" v-show="searchClicked">
+          <div style="float:right" v-show="this.$root.store.arr_to_sort.length != 0">
             <b-dropdown id="dropdown-1" text="Sort" class="m-md-2" variant="warning" >
               <b-button class="bot" @click="SortPopularity">Popularity</b-button>
               <b-button class="bot" @click="SortTime">Time</b-button>
@@ -59,7 +59,7 @@
         </div>
       </div>
       <div id="results">
-        <RecipePreviewListSearch :recipes="response"></RecipePreviewListSearch>
+        <RecipePreviewListSearch :recipes="this.$root.store.arr_to_sort"></RecipePreviewListSearch>
       </div>
   </div>
   </div>

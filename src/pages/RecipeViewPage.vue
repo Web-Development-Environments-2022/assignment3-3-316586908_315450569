@@ -64,8 +64,13 @@
                 {{ r.ingredientName }} : {{ r.amount }} {{r.units}}
               </li>
             </ul>
+            <div id="Save" v-if="!recipe.favorite">
+              <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
+              <br>
+              <br>
+            </div>
           </div>
-          <div v-if="recipe._instructions" class="wrapped">
+          <div v-if="recipe._instructions && recipe._instructions.length != 0" class="wrapped">
             Analyzed Instructions:
             <ol>
               <li v-for="s in recipe._instructions" :key="s.number">
@@ -73,8 +78,10 @@
               </li>
             </ol>
           </div>
-          <div v-else-if="recipe.instructions">Instructions:
+          <div v-else-if="recipe.instructions && recipe.instructions.length != 0">Instructions:
             <p>{{recipe.instructions}}</p>
+          </div>
+          <div v-else>There Are No Instructions Available
           </div>
         </div>
       </div>
@@ -164,6 +171,20 @@ export default {
       this.recipe = _recipe;
     } catch (error) {
       console.log(error);
+    }
+  },
+  methods:{
+    async Save(){
+      try{
+        await this.axios.post(this.$root.store.server_domain + '/users/favorites',
+        {
+            recipeId: this.$route.params.recipeId
+        });
+        this.recipe.favorite = true;
+      }
+      catch (error){
+        console.log(error);
+      }
     }
   }
 };

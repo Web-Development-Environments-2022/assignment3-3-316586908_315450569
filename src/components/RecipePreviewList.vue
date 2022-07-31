@@ -1,5 +1,5 @@
 <template>
-  <b-container style="position: relative; left: 50%; top: 50%; margin-left: 50%;">
+  <b-container style="position: relative; left: 5%; top: 50%; margin-left: 50%;">
     <h3>
       {{ title }}
       <slot></slot>
@@ -36,7 +36,7 @@ export default {
   methods: {
     async updateRecipes() {
       try {
-        const response = await this.$http.get(
+        const response = await this.axios.get(
           // state.server_domain + "/recipes/random",
           // "http://localhost:3000/recipes/random",
           this.$root.store.server_domain + "/recipes/random",

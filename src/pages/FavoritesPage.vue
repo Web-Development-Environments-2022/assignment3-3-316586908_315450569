@@ -1,25 +1,25 @@
 <template>
   <b-container>
     <div >
-    <b-col>
-      <b-row v-for="r in this.recipes.slice(0, this.recipes.length/3+1)" :key="r.id" >
+    <b-row>
+      <b-col v-for="r in this.recipes.slice(0, 5)" :key="r.id" >
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-row>
-    </b-col>
+      </b-col>
+    </b-row>
     </div>
     <div>
-    <b-col>
-      <b-row v-for="r in this.recipes.slice(this.recipes.length/3+1, ((this.recipes.length/3))*2)" :key="r.id" >
+    <b-row>
+      <b-col v-for="r in this.recipes.slice(5, 10)" :key="r.id" >
         <RecipePreview class="recipePreview" :recipe="r" />
-        </b-row>
-    </b-col>
+        </b-col>
+    </b-row>
     </div>
     <div>
-    <b-col>
-      <b-row v-for="r in this.recipes.slice(((this.recipes.length/3) +1)*2, this.recipes.length)" :key="r.id" >
+    <b-row>
+      <b-col v-for="r in this.recipes.slice(10, 15)" :key="r.id" >
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-row>
-    </b-col>
+      </b-col>
+    </b-row>
     </div>
   </b-container>
 </template>

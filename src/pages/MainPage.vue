@@ -4,12 +4,15 @@
 
       <div style="display:inline">
         <div style="display:inline; float:left; margin-right:50px;">
-          <RecipePreviewList title="Random Recipes" class="RandomRecipes center" />
-          <b-button variant="dark" @click="Refresh" style="position: relative;  left: 400px; bottom:100px">Refresh</b-button>
+          <RecipePreviewList title="Explore This Recipes" class="RandomRecipes center" ref="recipepreview"/>
+          <b-button variant="dark" @click="Refresh" style="position: relative;  left: 400px; bottom:0px">Refresh</b-button>
+          <br>
+          <br>
+          <br>
         </div>
         <div style="display:sticky; float:right; margin-left:5px; margin-top:5px ;">
-          <LoginPage v-if="!$root.store.username" style=" position: absolute;  left: 60%;"></LoginPage>
-          <RecipePreviewListLoggedIn v-else title="Last Watched Recipes"></RecipePreviewListLoggedIn>
+          <LoginComponent v-if="!$root.store.username" style=" position: absolute;  left: 70%; top: 100px;"></LoginComponent>
+          <RecipePreviewListLoggedIn v-else title="Last Watched Recipes" style="margin-right: 200px"></RecipePreviewListLoggedIn>
         </div>
       </div>
     </div>
@@ -18,21 +21,19 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
-import LoginPage from "../pages/LoginPage";
+import LoginComponent from "../components/LoginComponent";
 import RecipePreviewListLoggedIn from "../components/RecipePreviewListLoggedIn";
 
 export default {
   name: "MainPage",
   components: {
     RecipePreviewList,
-    LoginPage,
+    LoginComponent,
     RecipePreviewListLoggedIn
   },
   methods: {
-    Refresh(){
-      // RecipePreviewList.mounted();
-      RecipePreviewList.methods.updateRecipes();
-      // this.$root.$emit('RecipePreviewList');
+    async Refresh(){
+      this.$refs.recipepreview.updateRecipes();
       console.log("CLICKED");
     }
   }

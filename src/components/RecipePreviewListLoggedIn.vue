@@ -5,7 +5,7 @@
       <slot></slot>
     </h3>
     <b-col>
-      <b-row v-for="r in recipes" :key="r.id" >
+      <b-row v-for="r in recipes" :key="r.id" style="padding:10px">
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-row>
     </b-col>
