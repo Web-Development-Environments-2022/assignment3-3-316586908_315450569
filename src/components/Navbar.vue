@@ -40,7 +40,7 @@
             <b-dropdown id="dropdown-1" text="Personal" variant="outline-light" style="margin-right: 15px; font-size: 17px;">
               <router-link id="routLink" :to="{ name: 'favorites' }" class="nav-link" >My Favorites</router-link>
               <router-link id="routLink" :to="{ name: 'myRecipes' }" class="nav-link">My Recipes</router-link>
-              <router-link id="routLink" :to="{ name: 'about' }" class="nav-link">Family Recipes</router-link>
+              <router-link id="routLink" :to="{ name: 'familyRecipes' }" class="nav-link">Family Recipes</router-link>
             </b-dropdown>
           </div>
             <div style="display:inline-block">
