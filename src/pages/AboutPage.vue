@@ -43,7 +43,7 @@
 							<h2>Tal Ben Hamou</h2>
 							<p class="id">315450569</p>
 							<p>Tal 27 years old, a third year student.</p>
-							<p>tal.ben.hamou@post.bgu.ac.il</p>
+							<p>benhatal@post.bgu.ac.il</p>
 							<div style="text-align: right; padding-right: 60px;color:lightseagreen">
 								<label>My First Website</label>
 							</div>

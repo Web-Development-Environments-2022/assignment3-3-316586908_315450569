@@ -1,6 +1,6 @@
 <template>
   <div class="mainIm" >
-    <div style="position: absolute ; top:80%; left: 25%;">
+    <div style="position: absolute ; top:60%; left: 25%;">
     <h1 class="title">Search Page</h1>
       <div id="search_options">
         <form class="form-inline my-2 my-lg-0" ref="form" @submit.stop.prevent="handleSubmit" >
