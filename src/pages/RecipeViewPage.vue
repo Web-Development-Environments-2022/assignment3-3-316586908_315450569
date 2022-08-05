@@ -66,6 +66,7 @@
             </ul>
             <div id="Save" v-if="!recipe.favorite">
               <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
+              <router-link id="routLink" :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } " class="nav-link" >Prepare Recipe</router-link>
               <br>
               <br>
             </div>

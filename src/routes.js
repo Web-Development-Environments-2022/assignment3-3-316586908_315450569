@@ -51,6 +51,11 @@ const routes = [
     path: "/familyRecipes",
     name: "familyRecipes",
     component: () => import("./pages/FamilyRecipesPage")
+  },
+  {
+    path: "/:id/RecipePreparationPage",
+    name: "recipePreparationPage",
+    component: () => import("./pages/RecipePreparationPage")
   }
 ];
 
