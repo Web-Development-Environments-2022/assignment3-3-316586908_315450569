@@ -120,13 +120,27 @@
         </b-form-group>
         </form>
         <b-form-group
-          label="Instructions"
           label-for="instructions"
           invalid-feedback="instructions is required"
         >
-        <h5>Step {{this.steps.length + 1}}</h5>
+        <label for="instructions" style="font-weight: bold; text-decoration: underline; font-size:25px">Instructions</label>
+        <p>Explanation : Each recipe consists of Components and each Component has steps, each step has the necessary equipments, ingredients it is made of, a description and time preparation.</p>
+        <h4 style="color: red">Component {{this.analyzedInstructions.length + 1}} :</h4>
+        <b-form-group
+          label="Name"
+          label-for="Name"
+          invalid-feedback="componentName is required"
+        >
+          <b-form-input
+            id="componentName"
+            v-model="componentName"
+            placeholder="Component Name"
+            style="width: 170px; display:inline;"
+          ></b-form-input>
+        </b-form-group>
+        <h5 style="color:green">Step {{this.steps.length + 1}}</h5>
           <b-form-group
-          label="Equipments"
+          label="Equipments (Optional)"
           label-for="Equipments"
           invalid-feedback="Equipments is required"
         >
@@ -139,18 +153,18 @@
           <b-form-input
             id="equipment_tmp_num"
             v-model="equipment_tmp_num"
-            placeholder="tmp"
-            style="width: 100px;display:inline;margin-left:10px "
+            placeholder="tmp (optional)"
+            style="width: 130px;display:inline;margin-left:10px "
           ></b-form-input>
-          <b-form-select v-model="equipment_tmp_unit" :options="options_tmp_units" style="width:150px; margin-left:10px; height:40px; margin-bottom:5px"></b-form-select>
+          <b-form-select v-model="equipment_tmp_unit" :options="options_tmp_units" style="width:120px; margin-left:10px; height:40px; margin-bottom:5px"></b-form-select>
           <b-button @click="add_equipments" style="width: 70px;display:inline;margin-left:0px ">Add</b-button>
         </b-form-group>
         <b-form-group>
         <b-form-input
             id="step_ing_name"
             v-model="step_ing_name"
-            placeholder="name of ingredient"
-            style="width: 200px; display:inline;"
+            placeholder="name of ingredient (Optional)"
+            style="width: 250px; display:inline;"
           ></b-form-input>
         <b-button @click="add_ingredients" style="width: 70px;display:inline;margin-left:0px ">Add</b-button>
         </b-form-group>
@@ -158,7 +172,7 @@
         <b-form-group>
         <textarea
             id="step_description"
-            placeholder="Description Of The Step"
+            placeholder="Description Of The Step (Recommended)"
             v-model="step_description"
             required
             style="width:400px;height:100px"
@@ -176,7 +190,11 @@
           ></b-form-input>
           </b-form-group>
 
-         <b-button @click="add_step" style="width: 100px;display:inline;margin-left:0px ">Add Step</b-button>
+         <b-button @click="add_step" style="width: 100px;display:inline;margin-left:0px; background-color:green ">Add Step</b-button>
+         <br>
+         <br>
+          <b-button @click="add_component" style="width: 150px;display:inline;margin-left:0px; background-color:red ">Add Component</b-button>
+
         </b-form-group>
       
     </b-modal>
@@ -233,7 +251,9 @@ export default {
         step_ing_name: '',
         step_description: '',
         length_num: '',
-        steps: []
+        steps: [],
+        componentName: '',
+        analyzedInstructions: []
       }
     },
     methods: {
@@ -265,6 +285,108 @@ export default {
         this.handleSubmit()
       },
       async handleSubmit() {
+
+        // let tmp = {
+        //   name: '99999',                 
+        //   readyInMinutes: '55',
+        //   image: null,
+        //   aggregateLikes: '99',
+        //   vegan: true,
+        //   vegetarian: true,
+        //   glutenFree: true,
+        //   analyzedInstructions: [{
+        //     name: "component 1",
+        //     steps: [{
+        //       equipments: [{
+        //           name: 'oven',
+        //           tmp: {
+        //             number: '200',
+        //             unit: 'celcius'
+        //           }
+        //       }],
+        //       ingredients: [{
+        //         name: ''
+        //       }],
+        //       number: '0',
+        //       step: 'prepare the bazek',
+        //       length: {
+        //         number: '20',
+        //         unit: 'minutes'
+        //     }
+        //   },
+        //   {
+        //       equipments: [{
+        //           name: 'oven2',
+        //           tmp: {
+        //             number: '200',
+        //             unit: 'celcius'
+        //           }
+        //       }],
+        //       ingredients: [{
+        //         name: ''
+        //       }],
+        //       number: '1',
+        //       step: 'prepare the bazek2',
+        //       length: {
+        //         number: '20',
+        //         unit: 'minutes'
+        //     }
+        //   }
+        //   ]},
+        //   {
+        //     name: "component 2",
+        //     steps: [{
+        //       equipments: [{
+        //           name: 'magash',
+        //           tmp: {
+        //             number: '',
+        //             unit: ''
+        //           }
+        //       }],
+        //       ingredients: [{
+        //         name: 'tomato'
+        //       },
+        //       {
+        //         name: 'olives'
+        //       }],
+        //       number: '0',
+        //       step: 'prepare the pizza',
+        //       length: {
+        //         number: '20',
+        //         unit: 'minutes'
+        //     }
+        //   },
+        //   {
+        //       equipments: [],
+        //       ingredients: [],
+        //       number: '1',
+        //       step: 'insert the pizza',
+        //       length: {
+        //         number: '10',
+        //         unit: 'minutes'
+        //     }
+        //   }
+        //   ]}
+        //   ],
+        //   ingredients: [{
+        //     name: 'kemah',
+        //     amount: '500',
+        //     units: 'grams'
+        // },{
+        //     name: 'tomato',
+        //     amount: '50',
+        //     units: 'grams'
+        // },
+        // {
+        //   name: 'cheese',
+        //   amount: '500',
+        //   units: 'grams'
+        // }
+        // ],
+        //   servings: '2'
+        //   }
+
+
         // Exit when the form isn't valid
         if (!this.checkFormValidity()) {
           return
@@ -288,10 +410,7 @@ export default {
         // create http request to the server 
         try {
           this.response = await this.axios.post(
-            // "https://test-for-3-2.herokuapp.com/recipes/info",
-            // this.$root.store.server_domain + "/recipes/info",document.getElementById("search_input").value
             this.$root.store.server_domain + "/users/createRecipe/" + this.name,
-            //  + "/" + this.number + "/" + this.cuisine + "/" + this.diet + "/" + this.intolerance + "/" + this.sort,
             {
               params: {
                   name: this.$route.params.query,                 
@@ -301,13 +420,30 @@ export default {
                   vegan: this.vegan,
                   vegetarian: this.vegetarian,
                   glutenFree: this.gluten,
-                  instructions: this.steps,
+                  instructions: this.analyzedInstructions,
                   ingredients: this.ingredients,
                   servings: this.servings
                 }
               }
           );
-          this.steps = [];
+          // this.response = await this.axios.post(
+          //   this.$root.store.server_domain + "/users/createRecipe/" + tmp.name,
+          //   {
+          //     params: {
+          //         name: this.$route.params.query,                 
+          //         readyInMinutes: tmp.time,
+          //         image: tmp.url,
+          //         aggregateLikes: tmp.likes,
+          //         vegan: tmp.vegan,
+          //         vegetarian: tmp.vegetarian,
+          //         glutenFree: tmp.gluten,
+          //         instructions: tmp.analyzedInstructions,
+          //         ingredients: tmp.ingredients,
+          //         servings: tmp.servings
+          //       }
+          //     }
+          // );
+          this.analyzedInstructions = [];
           // console.log(this.response.data, "HERLLO");
           // console.log("response.status", this.response.status, this.response.length);
           if (this.response.status !== 200) this.$router.replace("/NotFound");
@@ -365,6 +501,14 @@ export default {
         this.step_ingredients = [];
         this.step_description = '';
         this.length_num = '';
+      },
+      add_component(){
+        this.analyzedInstructions.push({
+          name: this.componentName,
+          steps: this.steps
+        });
+        this.componentName = '';
+        this.steps = [];
       }
     }
   }

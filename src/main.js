@@ -83,6 +83,7 @@ const shared_data = {
   username: localStorage.username,
   server_domain: state.server_domain,
   arr_to_sort: [],
+  recipesAtMeal: [],
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;

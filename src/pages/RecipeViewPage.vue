@@ -66,16 +66,18 @@
             </ul>
             <div id="Save" v-if="!recipe.favorite">
               <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
-              <router-link id="routLink" :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } " class="nav-link" >Prepare Recipe</router-link>
               <br>
               <br>
             </div>
+            <button class="btn btn-outline-success my-2 my-sm-0">
+            <router-link :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } "  >Prepare Recipe</router-link>
+            </button>
           </div>
           <div v-if="recipe._instructions && recipe._instructions.length != 0" class="wrapped">
             Analyzed Instructions:
             <ol>
               <li v-for="s in recipe._instructions" :key="s.number">
-                {{ s.step }}
+                {{ (s.step != '') ? s.step : null }}
               </li>
             </ol>
           </div>
@@ -146,8 +148,10 @@ export default {
       {
         _instructions = analyzedInstructions
           .map((fstep) => {
-            fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-            return fstep.steps;
+            if (fstep.steps[0].step.length != 0){
+              fstep.steps[0].step = fstep.name + ' ' + fstep.steps[0].step;
+              return fstep.steps;
+            }
           })
           .reduce((a, b) => [...a, ...b], []);
       }
