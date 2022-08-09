@@ -11,14 +11,6 @@
             <router-link id="routLink" :to="{ name: 'about' }" class="nav-link" style="margin-right: 10px;margin-left: 20px; font-size: 17px;">About </router-link>
           </b-navbar-nav>
         </b-collapse>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <router-link id="routLink" :to="{ name: 'main' }" class="nav-link">Main</router-link>
-      <router-link id="routLink" :to="{ name: 'search' }" class="nav-link">Search </router-link>
-      <router-link id="routLink" :to="{ name: 'about' }" class="nav-link">About </router-link>
-    </div> -->
     <div id="guest_logged">
       <span v-if="!$root.store.username">
         <h5 style="display:inline; font-family:Cursive; font-size: 15px; text-transform: uppercase; color: lightcoral;margin-right: 15px; font-size: 17px; ">Hello Guest </h5>
@@ -32,15 +24,16 @@
         </div>
       </span>
       <span v-else style="display:inline; ">
-        <!-- <h5 style="display:inline; font-family:Cursive; text-transform: uppercase; color: white">{{ $root.store.username }} : </h5> -->
         <h5 style="display:inline; font-family:Cursive; font-size: 15px; text-transform: uppercase; color: lightcoral;margin-right: 15px; font-size: 17px;">{{ $root.store.username }} </h5>
-         
+        <h5 style="display:inline; font-family:Cursive; font-size: 15px; text-transform: uppercase; color: white;margin-right: 15px; font-size: 17px;">Meal Consist <strong style="color:lightcoral">{{this.$root.store.Meal.length}}</strong> Recipes</h5>
         <div style="display:inline;" >
           <div style="display:inline;" >
             <b-dropdown id="dropdown-1" text="Personal" variant="outline-light" style="margin-right: 15px; font-size: 17px;">
               <router-link id="routLink" :to="{ name: 'favorites' }" class="nav-link" >My Favorites</router-link>
               <router-link id="routLink" :to="{ name: 'myRecipes' }" class="nav-link">My Recipes</router-link>
               <router-link id="routLink" :to="{ name: 'familyRecipes' }" class="nav-link">Family Recipes</router-link>
+              <router-link id="routLink" :to="{ name: 'MyMeal' }" class="nav-link">My Meal</router-link>
+
             </b-dropdown>
           </div>
             <div style="display:inline-block">

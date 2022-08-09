@@ -28,7 +28,9 @@ import {
   ToastPlugin,
   LayoutPlugin,
   ModalPlugin,
-  ImagePlugin
+  ImagePlugin,
+  ProgressPlugin,
+  
 
 } from "bootstrap-vue";
 import DropdownPlugin from "bootstrap/dist/css/bootstrap.css";
@@ -46,6 +48,9 @@ import DropdownPlugin from "bootstrap/dist/css/bootstrap.css";
   DropdownPlugin,
   ModalPlugin,
   ImagePlugin,
+  ProgressPlugin,
+  
+  
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
@@ -84,6 +89,7 @@ const shared_data = {
   server_domain: state.server_domain,
   arr_to_sort: [],
   recipesAtMeal: [],
+  Meal: [],
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
@@ -95,6 +101,7 @@ const shared_data = {
     localStorage.removeItem("username");
     this.username = undefined;
     this.arr_to_sort = [];
+    this.recipesAtMeal = [];
   },
 };
 console.log(shared_data);

@@ -21,7 +21,7 @@
             </p>
         </div>
     </center>
-    <div style="display: flex; justify-content: center; ">
+    <div style="display: flex; justify-content: center;">
         <div style=" display: inline-block; margin-right: 300px">
             <button class="btn btn-outline-success my-2 my-sm-0" @click="prev">PREV</button>
         </div>
@@ -102,18 +102,34 @@ export default {
 
             if (found == -1){
                 this.$root.store.recipesAtMeal.push({
-                    id: this.id,
-                    curr_step: this.curr_step,
-                    step: this.step,
-                    stage: this.stage
+                    recipe:
+                    {
+                        id: this.id,
+                        curr_step: this.curr_step,
+                        step: this.step,
+                        stage: this.stage
+                    }
                 });
             }
             else
             {
-                this.$root.store.recipesAtMeal[found].curr_step = this.curr_step;
-                this.$root.store.recipesAtMeal[found].step = this.step;
-                this.$root.store.recipesAtMeal[found].stage = this.stage;
+                this.$root.store.recipesAtMeal[found].recipe.curr_step = this.curr_step;
+                this.$root.store.recipesAtMeal[found].recipe.step = this.step;
+                this.$root.store.recipesAtMeal[found].recipe.stage = this.stage;
             }
+
+            found = this.$root.store.Meal.findIndex(this.check);
+
+            if (found == -1){
+                return;
+            }
+            else
+            {
+                this.$root.store.Meal[found].recipe.curr_step = this.curr_step;
+                this.$root.store.Meal[found].recipe.total_step = this.total_step;
+            }
+
+
         },
         getStorage(){
             console.log(this.$root.store.recipesAtMeal);
@@ -122,13 +138,13 @@ export default {
             if (found == -1)
                 return;
             else{
-                this.curr_step = this.$root.store.recipesAtMeal[found].curr_step;
-                this.step = this.$root.store.recipesAtMeal[found].step;
-                this.stage = this.$root.store.recipesAtMeal[found].stage;
+                this.curr_step = this.$root.store.recipesAtMeal[found].recipe.curr_step;
+                this.step = this.$root.store.recipesAtMeal[found].recipe.step;
+                this.stage = this.$root.store.recipesAtMeal[found].recipe.stage;
             }
         },
         check(element){
-            return element.id === this.id;         
+            return element.recipe.id === this.id;         
         }
     }
 }

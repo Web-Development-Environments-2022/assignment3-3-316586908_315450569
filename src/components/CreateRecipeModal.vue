@@ -32,6 +32,7 @@
             id="url"
             v-model="url"
             :state="nameState"
+            placeholder="https://www.example.co.il/image/233.jpg"
             required
           ></b-form-input>
         

@@ -1,9 +1,13 @@
 <template>
     <div >
         <div>
-            <div class="recipe-header mt-3 mb-4" style="display: flex; justify-content: center; ">
-                <h1>{{ this.title }}</h1>
-                <img :src="this.image" class="center" />
+            <div class="recipe-header mt-3 mb-4" style="display: block; justify-content: center; ">
+                <div style="display:flex; justify-content: center;">
+                    <h1>{{ this.title }}</h1>
+                </div>
+                <div style="display:flex; justify-content: center;">
+                    <img :src="this.image" class="center" />
+                </div>
             </div>
             <div style="display: flex; justify-content: center; ">
             Ingredients:
@@ -34,7 +38,10 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" @click="Start" v-show="!flag" >Start</button>
             </div>
         </div>
-        <StepsRecipe v-if="flag" :analyzedInstructions="this.analyzedInstructions" :id="this.$route.params.id"></StepsRecipe>
+        <StepsRecipe v-if="flag && this.analyzedInstructions.length > 0" :analyzedInstructions="this.analyzedInstructions" :id="this.$route.params.id"></StepsRecipe>
+        <div v-else-if="flag && this.analyzedInstructions.length == 0">
+            <p style="display: flex; justify-content: center; ">There Are No Analyzed Instructions Available</p>
+        </div>
     </div>
 </template>
 

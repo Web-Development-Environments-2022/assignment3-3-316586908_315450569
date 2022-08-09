@@ -4,8 +4,8 @@
   
     <div class="r_img">
         <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" >
-          <img v-if="recipe.image != null" :src="recipe.image" class="w-100"/>
-          <img v-else src="../images/No_image_available.svg.png" class="w-100"/>
+          <img v-if="recipe.image != null && recipe.image != 'null' && recipe.image != undefined && recipe.image != 'undefined'" :src="recipe.image" style="width: 170px; height: 150px"/>
+          <img v-else src="../images/No_image_available.svg.png" style="width: 180px; height: 150px" />
         </router-link>
      </div> 
   <div class="card-body">

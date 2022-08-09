@@ -64,15 +64,20 @@
                 {{ r.ingredientName }} : {{ r.amount }} {{r.units}}
               </li>
             </ul>
-            <div id="Save" v-if="!recipe.favorite">
-              <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
-              <br>
-              <br>
+            <div style="display: flex; justify-content: center;">
+              <div id="Save" v-if="!recipe.favorite" >
+                <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
+              </div>
+              <div style="margin-left: 20px;">
+                <button class="btn btn-outline-info my-2 my-sm-0" @click="add_to_meal">
+                  <router-link class="nav-link" style="color:black; height: 24px; width: 130px; padding: 0px " :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } ">Prepare Recipe</router-link>
+                </button>
+              </div>
+              <div style="margin-left: 20px;">
+                <button class="btn btn-outline-warning my-2 my-sm-0" @click="add_to_meal" >Add To Meal</button>
+              </div>
             </div>
-            <button class="btn btn-outline-success my-2 my-sm-0">
-            <router-link :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } "  >Prepare Recipe</router-link>
-            </button>
-          </div>
+        </div>
           <div v-if="recipe._instructions && recipe._instructions.length != 0" class="wrapped">
             Analyzed Instructions:
             <ol>
@@ -190,6 +195,44 @@ export default {
       catch (error){
         console.log(error);
       }
+    },
+    add_to_meal(){
+      console.log("added to meal");
+      let total_steps = 0;
+      for (let i = 0 ; i < this.recipe.analyzedInstructions.length; i++){
+                total_steps = total_steps + this.recipe.analyzedInstructions[i].steps.length;
+      }
+      let found_at_recipesAtMeal = this.$root.store.recipesAtMeal.findIndex(this.check);
+      let curr_step = 0;
+      if (found_at_recipesAtMeal != -1){
+        curr_step = this.$root.store.recipesAtMeal[found_at_recipesAtMeal].recipe.curr_step;
+      }
+      let found_at_Meal = this.$root.store.Meal.findIndex(this.check);
+      if (found_at_Meal == -1){
+        this.$root.store.Meal.push({
+            recipe: {
+              id: this.$route.params.recipeId,
+              popularity: this.recipe.popularity,
+              readyInMinutes: this.recipe.readyInMinutes,
+              image: this.recipe.image,
+              title: this.recipe.title,
+              vegan: this.recipe.vegan,
+              vegetarian: this.recipe.vegetarian,
+              glutenFree: this.recipe.glutenFree,
+              seen: this.recipe.seen,
+              favorite: this.recipe.favorite,
+              servings:this.recipe.servings,
+              total_steps: total_steps,
+              curr_step: curr_step
+            }
+        });
+      }
+      else
+        return;
+      console.log(this.$root.store.Meal);
+    },
+    check(element){
+      return element.recipe.id === this.$route.params.recipeId;
     }
   }
 };
@@ -208,7 +251,4 @@ export default {
   margin-right: auto;
   width: 50%;
 }
-/* .recipe-header{
-
-} */
 </style>
