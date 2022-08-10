@@ -99,6 +99,8 @@
     </pre
       > -->
     </div>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -197,16 +199,23 @@ export default {
       }
     },
     add_to_meal(){
+      
+      if (this.$route.params.recipeId == undefined)
+        return;
+
       console.log("added to meal");
+      // calculate total_step of the recipe
       let total_steps = 0;
       for (let i = 0 ; i < this.recipe.analyzedInstructions.length; i++){
                 total_steps = total_steps + this.recipe.analyzedInstructions[i].steps.length;
       }
+
       let found_at_recipesAtMeal = this.$root.store.recipesAtMeal.findIndex(this.check);
       let curr_step = 0;
       if (found_at_recipesAtMeal != -1){
         curr_step = this.$root.store.recipesAtMeal[found_at_recipesAtMeal].recipe.curr_step;
       }
+
       let found_at_Meal = this.$root.store.Meal.findIndex(this.check);
       if (found_at_Meal == -1){
         this.$root.store.Meal.push({

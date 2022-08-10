@@ -1,6 +1,6 @@
 <template>
   <div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" >
         <!-- <a class="navbar-brand" href="#">Ido&Tal Recipes</a> -->
         <img src="../images/recipesImages/logo.png" class="logo">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -88,5 +88,6 @@ export default {
   width: 150px;
   height: 67px;
 }
+
 
 </style>
