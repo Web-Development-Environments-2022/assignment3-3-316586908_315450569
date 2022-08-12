@@ -2,7 +2,7 @@
   <div dir="rtl">
     <div id="firstres" >
         <center>
-        <div v-for="recipe in this.recipes" :key="recipe.id">
+        <div v-for="recipe in this.recipes" :key="recipe.recipeId">
             <br>
             <div class="recipe-header mt-3 mb-4" style="font-style: italic; font-weight: bold; font-size: 20px" >
                 <h1 >{{ recipe.title }}</h1>
@@ -78,7 +78,9 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-outline-info my-2 my-sm-0" @click="prepare(recipe.recipeId)">Prepare Recipe</button>
         </div>  
+        <br>
         </center>
     </div>
   </div>
@@ -108,6 +110,9 @@ export default {
             for (let i = 0; i < this.recipes.length; i++){
                 this.recipes[i].instructions = this.recipes[i].instructions.split("|");
             }
+        },
+        prepare(recipe_id){
+            this.$router.push({ name: 'recipePreparationPage', params: { id: recipe_id } });
         }
     }
 }

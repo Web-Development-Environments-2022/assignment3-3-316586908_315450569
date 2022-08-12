@@ -3,7 +3,7 @@
     <center>
         <div>
             <h4 style="color: red">Component {{stage + 1}} {{analyzedInstructions[stage].name}}</h4>
-            <h4 style="color: green">step {{analyzedInstructions[stage].steps[step].number}}</h4>
+            <h4 style="color: green">step {{parseInt(analyzedInstructions[stage].steps[step].number) + 1}}</h4>
             <h5 v-show="analyzedInstructions[stage].steps[step].equipment.length != 0">Equipments : </h5>
             <li v-for="eq in analyzedInstructions[stage].steps[step].equipment" :key="eq.name">
                 {{ eq.name }} 
@@ -16,7 +16,7 @@
             </li>
             <h5>Instructions : </h5>
             <p>{{analyzedInstructions[stage].steps[step].step}}</p>
-            <p v-if="analyzedInstructions[stage].steps[step].hasOwnProperty('length')">
+            <p v-if="analyzedInstructions[stage].steps[step].hasOwnProperty('length') && analyzedInstructions[stage].steps[step].length.number != ''">
                 {{analyzedInstructions[stage].steps[step].length.number}} {{analyzedInstructions[stage].steps[step].length.unit}}
             </p>
         </div>
