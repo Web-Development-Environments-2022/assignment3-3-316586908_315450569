@@ -56,12 +56,12 @@
           id="lastName"
           v-model="$v.form.lastName.$model"
           type="text"
-          :state="validateState('lastName')"
+          :state="validateLastName('lastName')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.lastName.required">
           last name is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+        <b-form-invalid-feedback v-if="!!$v.form.lastName.alpha">
           last name alpha
         </b-form-invalid-feedback>
       </b-form-group>
@@ -228,7 +228,6 @@ export default {
       },
       lastName: {
         required,
-        alpha
       },
       country: {
         required
