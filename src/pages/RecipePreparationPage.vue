@@ -42,6 +42,7 @@
         <div v-else-if="flag && this.analyzedInstructions.length == 0">
             <p style="display: flex; justify-content: center; ">There Are No Analyzed Instructions Available</p>
         </div>
+        <br>
     </div>
 </template>
 

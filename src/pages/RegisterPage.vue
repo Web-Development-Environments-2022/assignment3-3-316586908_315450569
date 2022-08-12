@@ -1,6 +1,7 @@
 <template>
-  <div class="imgD" style="bottom: 30%;">
-    <div class="what" style="position: absolute; top: 60%; left: 38%; bottom: 20%;">
+  <div >
+    <img src="../images/recipesImages/img4.webp"  width="100%" height="400px">
+    <div class="what" style="position: absolute; top: 60%; left: 38%; bottom: 20%; position:relative; align-items: center;justify-content: center; display:grid">
     <h1 class="title" >Register</h1>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group
@@ -56,12 +57,12 @@
           id="lastName"
           v-model="$v.form.lastName.$model"
           type="text"
-          :state="validateLastName('lastName')"
+          :state="validateState('lastName')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.lastName.required">
           last name is required
         </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!!$v.form.lastName.alpha">
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
           last name alpha
         </b-form-invalid-feedback>
       </b-form-group>

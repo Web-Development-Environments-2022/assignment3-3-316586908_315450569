@@ -1,6 +1,7 @@
 <template>
-  <div class="mainIm" >
-    <div style="position: absolute ; top:80%; left: 25%;">
+  <div>
+    <img src="../images/recipesImages/mainIMG.jpeg" width="100%" height="400px">
+    <div style="position:relative; align-items: center;justify-content: center; display:grid">
     <h1 class="title">Search Page</h1>
       <div id="search_options">
         <form class="form-inline my-2 my-lg-0" ref="form" @submit.stop.prevent="handleSubmit" >
@@ -184,13 +185,14 @@ export default {
     background-color: rgb(255, 255, 255);
     border: none;
 }
-.mainIm{
-    background-image: url("../images/recipesImages/mainIMG.jpeg"); /* The image used */
-    background-color: #cccccc; /* Used if the image is unavailable */
-    height: 600px; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-}
+
+/* .mainIm{
+    background-image: url("../images/recipesImages/mainIMG.jpeg"); 
+    background-color: #cccccc; 
+    height: 600px; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+} */
 </style>
 

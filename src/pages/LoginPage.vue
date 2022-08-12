@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="imgD">
-    <LoginComponent style="margin-top:150px"></LoginComponent>
+    <div >
+    <img src="../images/recipesImages/img5C.jpg" width="100%" height="400px" >
+    <div style="align-items: center;justify-content: center; display:grid">
+      <LoginComponent style="margin-top:100px"></LoginComponent>
+    </div>
     </div>
   </div>
 </template>

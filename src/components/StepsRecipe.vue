@@ -30,7 +30,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0"  @click="next">NEXT</button>
         </div>
     </div>
-    
+    <br>
   </div>
 </template>
 

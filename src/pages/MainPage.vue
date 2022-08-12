@@ -1,18 +1,16 @@
 <template>
-  <div class="imgDiv" >
-    <div style="position: relative; top: 400px;">
-
+  <div class="imgDiv">
+    <div style="position: relative; top: 350px;">
       <div style="display:inline">
-        <div style="display:inline; float:left; margin-right:50px;">
+        <div style="display:inline; float:left; ">
           <RecipePreviewList title="Explore This Recipes" class="RandomRecipes center" ref="recipepreview"/>
-          <b-button variant="dark" @click="Refresh" style="position: relative;  left: 400px; bottom:0px">Refresh</b-button>
-          <br>
+          <b-button variant="dark" @click="Refresh" style="position: relative;  left: 180px; bottom:0px">Refresh</b-button>
           <br>
           <br>
         </div>
-        <div style="display:sticky; float:right; margin-left:5px; margin-top:5px ;">
-          <LoginComponent v-if="!$root.store.username" style=" position: absolute;  left: 70%; top: 100px;"></LoginComponent>
-          <RecipePreviewListLoggedIn v-else title="Last Watched Recipes" style="margin-right: 200px"></RecipePreviewListLoggedIn>
+        <div style="display:inline; float:right; margin-left:5px; margin-top:5px ;">
+            <LoginComponent v-if="!$root.store.username" style=" position: absolute;  left: 70%; top: 100px;"></LoginComponent>
+            <RecipePreviewListLoggedIn v-else title="Last Watched Recipes" style="margin-right: 120px"></RecipePreviewListLoggedIn>
         </div>
       </div>
     </div>

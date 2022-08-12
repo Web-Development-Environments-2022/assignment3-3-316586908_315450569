@@ -1,5 +1,5 @@
 <template>
-    <div class="what" style="position: fixed; left: 40%; top: 40%;">
+    <div class="what" style="left: 40%; top: 40%;">
       <div >
       <h1 class="title">Login</h1>
       <b-form @submit.prevent="onLogin">

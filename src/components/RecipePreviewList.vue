@@ -1,7 +1,7 @@
 <template>
-  <b-container style="position: relative; left: 5%; top: 50%; margin-left: 50%;">
+  <b-container style="position: relative; left: 5%; top: 30%; margin-left: 20%;">
     <h3>
-      {{ title }}
+      {{ title }}:
       <slot></slot>
     </h3>
     <b-row>

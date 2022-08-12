@@ -102,6 +102,7 @@ const shared_data = {
     this.username = undefined;
     this.arr_to_sort = [];
     this.recipesAtMeal = [];
+    this.Meal = [];
   },
 };
 console.log(shared_data);
