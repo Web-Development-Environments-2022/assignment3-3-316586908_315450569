@@ -69,8 +69,8 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
               </div>
               <div style="margin-left: 20px;">
-                <button class="btn btn-outline-info my-2 my-sm-0" @click="add_to_meal">
-                  <router-link class="nav-link" style="color:black; height: 24px; width: 130px; padding: 0px " :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } ">Prepare Recipe</router-link>
+                <button class="btn btn-outline-info my-2 my-sm-0" @click="prepare">Prepare Recipe
+                  <!-- <router-link class="nav-link" style="color:black; height: 24px; width: 130px; padding: 0px " :to="{ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } } ">Prepare Recipe</router-link> -->
                 </button>
               </div>
               <div style="margin-left: 20px;">
@@ -242,6 +242,11 @@ export default {
     },
     check(element){
       return element.recipe.id === this.$route.params.recipeId;
+    },
+    prepare(){
+      console.log("prepare");
+      this.add_to_meal();
+      this.$router.push({ name: 'recipePreparationPage', params: { id: this.$route.params.recipeId } });
     }
   }
 };
