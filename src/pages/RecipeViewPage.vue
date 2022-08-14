@@ -64,7 +64,7 @@
                 {{ r.ingredientName }} : {{ r.amount }} {{r.units}}
               </li>
             </ul>
-            <div style="display: flex; justify-content: center;">
+            <div v-if="this.$root.store.username" style="display: flex; justify-content: center;">
               <div id="Save" v-if="!recipe.favorite" >
                 <button class="btn btn-outline-success my-2 my-sm-0" @click="Save">Save To Favorite</button>
               </div>
