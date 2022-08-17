@@ -14,7 +14,7 @@
             <h5 v-show="analyzedInstructions[stage].steps[step].ingredients.length != 0">Ingredients : </h5> 
             <li v-for="ing in analyzedInstructions[stage].steps[step].ingredients" :key="ing.name">
                 {{ing.name}} 
-                <img :src="ing.image">
+                <!-- <img :src="ing.image"> -->
             </li>
             <h5>Instructions : </h5>
             <p>{{analyzedInstructions[stage].steps[step].step}}</p>
